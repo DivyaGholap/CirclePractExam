@@ -10,4 +10,28 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
+      - one:
+        docker:
+          image: circleci/ruby:2.4.1
+          auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+      steps:jobs:
+        build: 
+          docker:       
+            - image: buildpack-deps:trusty        
+          steps:       
+            - run: echo "hello world"  
+            - run: Sleep 25 
+     two:jobs:
+       build: 
+         docker:       
+           - image: buildpack-deps:trusty        
+         steps:       
+           - run: echo "hello world"                        
+          
+      
       - welcome/run
+docker:
+steps:
+  
